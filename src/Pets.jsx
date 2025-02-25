@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react"
 import Modal from 'react-modal';
+import { usePets } from "./PetsContext";
 
 Modal.setAppElement('#root');
 export default function Pets() {
-    const [pets, setPets] = useState([])
+    //const [pets, setPets] = useState([])
+    //const [loading, setLoading] = useState(true)
     const [modalIsOpen, setIsOpen] = useState(false);
+
     const customStyles = {
   content: {
     top: '50%',
@@ -15,25 +18,8 @@ export default function Pets() {
     transform: 'translate(-50%, -50%)',
   },
 };
-    useEffect(() => {
-        const getPets = async () => {
-            const response = await fetch('https://petstore3.swagger.io/api/v3/pet/findByStatus?status=available');
-            const data = await response.json();
-            return data;
-        }
-        getPets().then(data => {
-            setPets(data);
-        });
-    }, []);
 
-    const deletePet = async (id) => {
-        await fetch(`https://petstore3.swagger.io/api/v3/pet//${id}`, {
-            method: 'DELETE'
-        })
-        .finally(() => {
-            setPets(pets.filter(pet => pet.id !== id));
-        });
-    }
+    const {pets, loading, search, remove} = usePets();
 
     return (<>
         <h2>Total Pets {pets.length}</h2>
@@ -49,11 +35,13 @@ export default function Pets() {
       </Modal>
         <button onClick={() => setIsOpen(true)}>Show Modal</button>
         <section>
-            {pets.map(pet => (
+            {loading
+            ? <p>Loading...</p>
+            : pets.map(pet => (
                 <div key={pet.id} className="card">
                     <h2>{pet.name}</h2>
                     <p>Categoría: {pet.category ? pet.category.name : 'N/A'}</p>
-                    <button onClick={() => deletePet(pet.id)}>Eliminar</button>
+                    <button onClick={() => remove(pet.id)}>Eliminar</button>
                 </div>
             ))}
         </section>
