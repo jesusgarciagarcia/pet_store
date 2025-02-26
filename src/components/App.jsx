@@ -1,8 +1,8 @@
 import { Routes, Route } from "react-router";
-import Layout from './common/Layout.jsx'
-import Home from './Home.jsx'
-import Pets from './Pets.jsx'
-import PetsContextProvider from './PetsContext.jsx'
+import Layout from './layout/Layout.jsx'
+import Home from './home/Home.jsx'
+import Pets from './pets/Pets.jsx'
+import PetsContextProvider from './pets/PetsContext.jsx'
 
 import './App.css'
 

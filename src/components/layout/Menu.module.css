@@ -1,0 +1,24 @@
+.menu {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  background-color: var(--secondary-color);
+  margin: 0;
+}
+
+.menu {
+  margin: 0 1em;
+}
+
+.menu a {
+  color: white;
+  text-decoration: none;
+  padding: 0.5em 1em;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.menu a:hover {
+  background-color: var(--hover-color);
+}
