@@ -29,6 +29,8 @@ export default function Pets() {
             <form onSubmit="addPet(event)">
                 <input type="text" id="pet-name" placeholder="Nombre de la mascota" required/>
                 <input type="text" id="pet-category" placeholder="Categoría" required/>
+                <button type="button" className="btn btn-primary me-3">Botonnnnnnn</button>
+                {/*<Button></Button>*/}
                 <button type="submit">Añadir</button>
             </form>
         </section>
