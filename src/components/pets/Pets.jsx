@@ -3,6 +3,7 @@ import Modal from 'react-modal';
 import { usePets } from "./PetsContext";
 import styles from "./Pets.module.css";
 import Pet from "./Pet";
+import MainSection from "../common/MainSection";
 
 Modal.setAppElement('#root');
 export default function Pets() {
@@ -24,16 +25,14 @@ export default function Pets() {
 
     return (
       <>
-        <section className={styles["add-pet-section"]}>
-            <h2>Añadir Mascota</h2>
-            <form onSubmit="addPet(event)">
-                <input type="text" id="pet-name" placeholder="Nombre de la mascota" required/>
-                <input type="text" id="pet-category" placeholder="Categoría" required/>
-                <button type="button" className="btn btn-primary me-3">Botonnnnnnn</button>
-                {/*<Button></Button>*/}
-                <button type="submit">Añadir</button>
-            </form>
-        </section>
+
+      <MainSection title="Añadir Mascota">
+        <form onSubmit="addPet(event)">
+              <input type="text" id="pet-name" placeholder="Nombre de la mascota" required/>
+              <input type="text" id="pet-category" placeholder="Categoría" required/>
+              <button type="submit">Añadir</button>
+          </form>
+      </MainSection>
         <section>
             <h2>Total de Mascotas: <span id="total-pets">{pets.length}</span></h2>
         </section>
